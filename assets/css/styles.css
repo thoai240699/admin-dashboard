@@ -1,13 +1,149 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*   Root Variables  */
+:root {
+  --primary-color: #4376f5;
+  --primary-dark: #4338ca;
+  --secondary-color: #64748b;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --light-bg: #f8fafc;
+  --border-color: #016ebe;
+  --color-gradient: linear-gradient(
+    270deg,
+    #00acc4 0%,
+    #0082e0 54%,
+    #006cb9 100%
+  );
+  --color-gradient2: linear-gradient(
+    270deg,
+    #006cb9 0%,
+    #0082e0 54%,
+    #00acc4 100%
+  );
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
-
 
 body {
   font-size: 1.6rem;
-  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+input {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Login  */
+.modal {
+  display: flex;
+  position: fixed;
+  background-image: linear-gradient(to bottom right, #5761b2, #1fc5a8);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  border: 3px solid #016ebe;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: var(--shadow-xl);
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 767px) {
+  .modal-content {
+    padding: 20px;
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.login-header h2 {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.form-group {
+  display: block;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 180px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.form-group input {
+  padding: 8px;
+  border: 1px solid #8f959e;
+  border-radius: 8px;
+  min-width: 50px;
+}
+
+.form-group input:focus {
+  outline: 3px solid var(--border-color);
+  border-color: var(--border-color);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: block;
+  width: 100px;
+  height: 35px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: var(--primary-color);
+  margin: 0 auto;
+  border-radius: 8px;
+  color: white;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn:focus {
+  outline: 3px solid var(--primary-color);
 }
