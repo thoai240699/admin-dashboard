@@ -1,7 +1,7 @@
 const Auth = {
   async login(username, password) {
     try {
-      const response = API.login(username, password);
+      const response = await API.login(username, password);
 
       if (response.result && response.result.token) {
         API.setToken(response.result.token);
@@ -23,8 +23,15 @@ const Auth = {
   },
 
   redirectToDashboard() {
-    document.getElementById('loginModal').classList.remove('active');
-    document.getElementById('dashboard').classList.remove('hidden');
+    const loginModal = document.getElementById('loginModal');
+    const dashboard = document.getElementById('dashboard');
+
+    if (loginModal) {
+      loginModal.classList.remove('active');
+    }
+    if (dashboard) {
+      dashboard.classList.remove('hidden');
+    }
   },
 };
 

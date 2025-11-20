@@ -66,8 +66,304 @@
       </div>
     </div>
     <!-- Main Dashboard -->
-    <div class="dashboard hidden">
-      <h1>Dang nhap thanh cong</h1>
+    <div id="dashboard" class="dashboard hidden">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <i class="fas fa-store"></i>
+          <h1>Admin</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="dashboard">
+            <i class="fas fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item" data-page="users">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+          </a>
+          <a href="#" class="nav-item" data-page="orders">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span>
+          </a>
+          <a href="#" class="nav-item" data-page="roles">
+            <i class="fas fa-user-tag"></i>
+            <span>Roles</span>
+          </a>
+          <a href="#" class="nav-item" data-page="permissions">
+            <i class="fas fa-key"></i>
+            <span>Permissions</span>
+          </a>
+          <a href="#" class="nav-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="btn btn-danger btn-block">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+          <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <i class="fas fa-store"></i>
+          <h1>E-Commerce Admin</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="dashboard">
+            <i class="fas fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item" data-page="users">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+          </a>
+          <a href="#" class="nav-item" data-page="orders">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span>
+          </a>
+          <a href="#" class="nav-item" data-page="roles">
+            <i class="fas fa-user-tag"></i>
+            <span>Roles</span>
+          </a>
+          <a href="#" class="nav-item" data-page="permissions">
+            <i class="fas fa-key"></i>
+            <span>Permissions</span>
+          </a>
+          <a href="#" class="nav-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="btn btn-danger btn-block">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button id="sidebarToggle" class="btn-icon">
+              <i class="fas fa-bars"></i>
+            </button>
+            <h2 id="pageTitle">Dashboard</h2>
+          </div>
+          <div class="header-right">
+            <div class="user-info">
+              <span id="userNameDisplay">Admin</span>
+              <i class="fas fa-user-circle"></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content">
+          <!-- Dashboard Page -->
+          <div id="dashboardPage" class="page active">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon blue">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="totalUsers">0</h3>
+                  <p>Total Users</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon green">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="totalOrders">0</h3>
+                  <p>Total Orders</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon orange">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="pendingOrders">0</h3>
+                  <p>Pending Orders</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon red">
+                  <i class="fas fa-user-tag"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="totalRoles">0</h3>
+                  <p>Total Roles</p>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-charts">
+              <div class="chart-card">
+                <h3>Recent Activity</h3>
+                <div id="recentActivity" class="activity-list">
+                  <p class="text-muted">Loading...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- Users Page -->
+      <div id="usersPage" class="page">
+        <div class="page-header">
+          <h3>User Management</h3>
+          <button class="btn btn-primary" onclick="openUserModal()">
+            <i class="fas fa-plus"></i> Add User
+          </button>
+        </div>
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Full Name</th>
+                  <th>Roles</th>
+                  <th>Created Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr>
+                  <td colspan="6" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>          <!-- Orders Page -->
+          <div id="ordersPage" class="page">
+            <div class="page-header">
+              <h3>Order Management</h3>
+              <div class="filter-group">
+                <select id="orderStatusFilter" class="form-select">
+                  <option value="">All Status</option>
+                  <option value="PENDING">Pending</option>
+                  <option value="APPROVED">Approved</option>
+                  <option value="DELIVERED">Delivered</option>
+                  <option value="CANCELLED">Cancelled</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>User</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <tr>
+                    <td colspan="6" class="text-center">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Roles Page -->
+          <div id="rolesPage" class="page">
+            <div class="page-header">
+              <h3>Role Management</h3>
+              <button class="btn btn-primary" onclick="openRoleModal()">
+                <i class="fas fa-plus"></i> Add Role
+              </button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Role Name</th>
+                    <th>Description</th>
+                    <th>Permissions</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="rolesTableBody">
+                  <tr>
+                    <td colspan="4" class="text-center">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Permissions Page -->
+          <div id="permissionsPage" class="page">
+            <div class="page-header">
+              <h3>Permission Management</h3>
+              <button class="btn btn-primary" onclick="openPermissionModal()">
+                <i class="fas fa-plus"></i> Add Permission
+              </button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Permission Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="permissionsTableBody">
+                  <tr>
+                    <td colspan="3" class="text-center">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Settings Page -->
+          <div id="settingsPage" class="page">
+            <div class="page-header">
+              <h3>Settings</h3>
+            </div>
+            <div class="settings-container">
+              <div class="settings-card">
+                <h4><i class="fas fa-server"></i> API Configuration</h4>
+                <div class="form-group">
+                  <label>API Base URL</label>
+                  <input
+                    type="text"
+                    id="apiBaseUrl"
+                    class="form-control"
+                    value="http://localhost:8080/ecommerce"
+                  />
+                </div>
+                <button class="btn btn-primary" onclick="saveSettings()">
+                  <i class="fas fa-save"></i> Save Settings
+                </button>
+              </div>
+              <div class="settings-card">
+                <h4><i class="fas fa-user"></i> Profile Information</h4>
+                <div id="profileInfo">Loading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+         
     </div>
     <!-- Scripts -->
     <script src="./assets/js/config.js"></script>

@@ -115,9 +115,9 @@ class API {
       ...option,
       headers: {
         // Lấy headers mặc định (Content-Type + Authorization nếu auth !== false)
-        ...this.getHeaders(options.auth !== false),
+        ...this.getHeaders(option.auth !== false),
         // Merge với custom headers nếu có
-        ...options.headers,
+        ...option.headers,
       },
     };
 
@@ -163,50 +163,49 @@ class API {
       }
       return data;
     } catch (error) {
-      console.error('API Error:', error);
+      throw error;
     }
   }
 
-/**
- * API Login
- *
- * @param {string} username - Tên đăng nhập
- * @param {string} password - Mật khẩu
- * @returns {Promise<Object>} Response chứa token và user info
- *
- * Request Body:
- * {
- *   "username": "admin",
- *   "password": "password123"
- * }
- *
- * Response Success:
- * {
- *   "result": {
- *     "token": "eyJhbGciOiJIUzI1NiIs...",
- *     "username": "admin",
- *     "email": "admin@example.com",
- *     "roles": [{"name": "ADMIN"}]
- *   }
- * }
- *
- * Flow:
- * 1. Gửi POST request đến /auth/token
- * 2. Body chứa username và password dạng JSON
- * 3. auth: false vì đây là request login, chưa có token
- * 4. Backend verify credentials
- * 5. Trả về JWT token nếu đúng
- */
-static async login(username, password) {
-  return this.request('/auth/token', {
-    method: 'POST', // HTTP method POST để gửi credentials
-    body: JSON.stringify({ username, password }), // Convert object sang JSON string
-    auth: false, // Không cần Authorization header vì đang login
-  });
-}
+  /**
+   * API Login
+   *
+   * @param {string} username - Tên đăng nhập
+   * @param {string} password - Mật khẩu
+   * @returns {Promise<Object>} Response chứa token và user info
+   *
+   * Request Body:
+   * {
+   *   "username": "admin",
+   *   "password": "password123"
+   * }
+   *
+   * Response Success:
+   * {
+   *   "result": {
+   *     "token": "eyJhbGciOiJIUzI1NiIs...",
+   *     "username": "admin",
+   *     "email": "admin@example.com",
+   *     "roles": [{"name": "ADMIN"}]
+   *   }
+   * }
+   *
+   * Flow:
+   * 1. Gửi POST request đến /auth/token
+   * 2. Body chứa username và password dạng JSON
+   * 3. auth: false vì đây là request login, chưa có token
+   * 4. Backend verify credentials
+   * 5. Trả về JWT token nếu đúng
+   */
+  static async login(username, password) {
+    return this.request('/auth/token', {
+      method: 'POST', // HTTP method POST để gửi credentials
+      body: JSON.stringify({ username, password }), // Convert object sang JSON string
+      auth: false, // Không cần Authorization header vì đang login
+    });
+  }
 
   static async getMyInfo() {
     return this.request('/users/myInfo');
   }
-
 }

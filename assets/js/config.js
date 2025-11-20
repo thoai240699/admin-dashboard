@@ -1,5 +1,5 @@
 const CONFIG = {
-  API_BASE_URL: 'http://localhost:8080/api',
+  API_BASE_URL: 'http://localhost:8080/ecommerce',
   TOKEN_KEY: 'admin_token',
   USER_KEY: 'admin_user',
 };
@@ -12,7 +12,7 @@ const STORAGE_KEYS = {
 };
 
 // Lấy URL đã lưu từ settings
-function getApiBaseUrl(){
+function getApiBaseUrl() {
   return localStorage.getItem('apiBaseUrl') || CONFIG.API_BASE_URL;
 }
 
